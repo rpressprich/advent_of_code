@@ -4,14 +4,17 @@ const {day1: data} = require("./common");
 
 // For the first challenge, we compare every day with the day 1 before
 // For the second challenge, we compare every day with the day 3 before
-// const offset = 1;
-const offset = 3;
+const offsets = [1, 3];
 
-let result = 0
-for (let i = offset, dataLength = data.length; i < dataLength; i++) {
-    if (data[i - offset] < data[i]) {
-        result++;
+const [resultOne, resultTwo] = offsets.map(offset => {
+    let result = 0;
+    for (let i = offset, dataLength = data.length; i < dataLength; i++) {
+        if (data[i - offset] < data[i]) {
+            result++;
+        }
     }
-}
+    return result;
+});
 
-console.log(result);
+console.log("part one: ", resultOne);
+console.log("part two: ", resultTwo);
